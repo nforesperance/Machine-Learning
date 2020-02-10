@@ -69,28 +69,6 @@ for i in forecast_set:
     next_unix += 86400
     df.loc[next_date] = [next_date]+[np.nan for _ in range(len(df.columns)-2)]+[i]
 
-
-# print(df.tail(16))
-
-# print(x)
-
-
-# print(x[-forecast_out:])
-
-# plt.plot(df['Date'],df['Close'], label = "Close", color="blue")
-# plt.plot((df['year'])[-forecast_out:],(df['Forecast'])[-forecast_out:], label = "Forecast", color="red")
-# plt.legend(loc=4)
-# plt.xlabel('Date')
-# plt.ylabel('Price')
-# plt.show()
-# print(y_l)
-# plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
-# plt.gca().xaxis.set_major_locator(mdates.DayLocator())
-# plt.gca().xaxis.set_xlim([datetime.date(2010, 10, 20), datetime.date(2010, 11, 4)])
-# plt.plot(x_latest,y_latest)
-# plt.gcf().autofmt_xdate()
-# plt.show()
-
 fig, ax = plt.subplots()
 ax.set_aspect('auto')
 fig.autofmt_xdate()
@@ -102,9 +80,7 @@ x_old=x[:-forecast_out]
 y =[d for d in df['label']]
 y= y[:-forecast_out]
 data = pd.DataFrame({'x':x_old, 'y':y})
-
 datemin = np.datetime64(str((data['x'])[0].date()))
-
 
 # Predicted 
 y_pred = df['Forecast']
@@ -115,7 +91,6 @@ last = len(pred_df['x'])-1
 datemax = np.datetime64(str((pred_df['x'])[last].date()))
 
 ax.set_xlim(datemin, datemax)
-
 ax.set_ylim(min(data['y'])-0.2,max(pred_df['y'])+0.2)
 plt.plot(data['x'],data['y'], color="red")
 plt.plot(pred_df['x'],pred_df['y'], color="blue")
