@@ -73,7 +73,7 @@ for i in forecast_set:
 # print(df.tail(16))
 x = pd.to_datetime(df['Date'], format='%Y-%m-%d') 
 y = [d for d in df['Forecast']]
-print(x)
+# print(x)
 
 
 # print(x[-forecast_out:])
@@ -98,13 +98,13 @@ y_l =y[-forecast_out:]
 # plt.show()
 
 data = pd.DataFrame({'x':x_l, 'y':y_l})
-# print(data.head())
+print(str((data['x'])[0].date()))
 fig, ax = plt.subplots()
 ax.set_aspect('auto')
 fig.autofmt_xdate()
-datemin = np.datetime64('2017-10-20')
-datemax = np.datetime64('2017-11-04')
+datemin = np.datetime64(str((data['x'])[0].date()))
+datemax = np.datetime64(str((data['x'])[-1].date()))
 ax.set_xlim(datemin, datemax)
-ax.set_ylim(55,60)
+ax.set_ylim(min(data['y'])-0.2,max(data['y'])+0.2)
 plt.plot(data['x'],data['y'], label = "Close", color="blue")
 plt.show()
