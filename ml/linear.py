@@ -7,6 +7,7 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 from matplotlib import style
 import matplotlib.dates as mdates
+import pickle
 
 style.use('ggplot')
 
@@ -51,10 +52,18 @@ X = X[:-forecast_out]
 
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=0.2)
 
-reg = LinearRegression()
-reg.fit(X_train,y_train)
-accuracy = reg.score(X_test,y_test)
+# Note: This section was used to create pickle and commented out
+# so as to avoid training the model every time
 
+# reg = LinearRegression(n_jobs=-1)
+# reg.fit(X_train,y_train)
+# with open ('linearregression.pickle','wb') as f:
+#     pickle.dump(reg,f)
+
+pickle_in = open("linearregression.pickle",'rb')
+reg = pickle.load(pickle_in)
+
+accuracy = reg.score(X_test,y_test)
 forecast_set = reg.predict(X_lately)
 
 df['Forecast'] = np.nan
