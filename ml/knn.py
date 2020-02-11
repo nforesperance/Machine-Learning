@@ -18,6 +18,8 @@ y = np.array(df['class'])
 
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=0.2)
 
+
+
 # Note: This section was used to create pickle and commented out
 # so as to avoid training the model every time
 
