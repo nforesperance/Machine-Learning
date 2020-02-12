@@ -23,8 +23,8 @@ X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_siz
 # Note: This section was used to create pickle and commented out
 # so as to avoid training the model every time
 
-# reg = LinearRegression(n_jobs=-1)
-# reg.fit(X_train,y_train)
+# clf = neighbors.KNeighborsClassifier()
+# clf.fit(X_train,y_train)
 # with open ('breast_cancer.pickle','wb') as f:
 #     pickle.dump(reg,f)
 
