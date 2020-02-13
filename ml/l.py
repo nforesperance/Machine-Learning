@@ -98,7 +98,7 @@ class Support_Vector_Machine:
             #start with new latest_optimum (initial values for w)
             latest_optimum = opt_choice[0][0]+step*2
 
-        #You can run this section with different values of b_range multiples to makesure we have values as close
+        #You can run this section with different values of b_range multiples to make sure we have values as close
         # to one as possible for all points
         for i in self.data:
             for xi in self.data[i]:
@@ -146,9 +146,6 @@ class Support_Vector_Machine:
         self.ax.plot([hyp_x_min,hyp_x_max],[db1,db2],'y--')
 
         plt.show()
-
-
-
 # Note: This section was used to create pickle and commented out
 # so as to avoid training the model every time
 
